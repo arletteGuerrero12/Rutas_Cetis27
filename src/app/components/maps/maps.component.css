@@ -1,0 +1,64 @@
+
+.mapM {
+  position: absolute; /* Usa posición absoluta para mover el contenedor */
+  top: 250px; /* Ajusta este valor para mover el contenedor hacia abajo */
+  left: 60%; /* Ajusta este valor para mover el contenedor hacia la derecha */
+  width: 600px; /* Aumenta el ancho del contenedor */
+  height: 400px; /* Aumenta la altura del contenedor */
+  border: 2px solid #000; /* Agrega un borde sólido negro */
+  
+  
+}
+
+.map-container {
+  width: 100%;
+  height: 350px; /* Tamaño del mapa */
+  position: relative;
+}
+
+  
+  button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #025E73;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #017A92;
+  }
+  .ol-popup {
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    bottom: 12px;
+    left: -50px;
+    min-width: 200px;
+    transform: translateY(-100%);
+    white-space: nowrap;
+  }
+  @media (max-width: 768px) {
+    .mapM {
+      top: 200px; /* Ajusta el valor para dispositivos más pequeños */
+      left: 70%; /* Ajusta el valor para dispositivos más pequeños */
+      width: 40%; /* La tabla ocupa el 90% del ancho del contenedor */
+      height: auto; /* Ajusta la altura automáticamente */
+      border: 1px solid #000; /* Disminuye el grosor del borde en dispositivos pequeños */
+      padding: 0 10px; /* Ajusta el padding en dispositivos más pequeños */
+    }
+}
+@media (min-width: 1200px) {
+  .mapM {
+    width: 35%; /* Ajusta el ancho del contenedor en pantallas grandes */
+    height: 55%;
+    left: 60%; /* Ajusta el valor para centrar el contenedor en pantallas grandes */
+  }
+
+  
+}

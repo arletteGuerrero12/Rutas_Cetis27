@@ -1,0 +1,88 @@
+  .table{
+    position: absolute; /* Usa posición absoluta para mover el contenedor */
+    top: 30px; /* Ajusta este valor para mover el contenedor hacia abajo */
+    left: 0px; /* Ajusta este valor para mover el contenedor hacia la derecha */
+    width: 500px; /* Aumenta el ancho del contenedor */
+    height: 400px; /* Aumenta la altura del contenedor */
+    /*border: 2px solid #000;  Agrega un borde sólido negro */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si el contenido es demasiado ancho */
+  }
+  
+  .tableT .table {
+    width: 100%; /* La tabla debe ocupar todo el ancho del contenedor */
+    height: 100%;
+    table-layout: fixed; /* Asegura que la tabla no se expanda más allá del contenedor */
+    word-wrap: break-word; /* Permite que el contenido de las celdas se ajuste */
+  }
+  
+  .tableT .table th,
+  .tableT .table td {
+    padding: 8px; /* Ajusta el padding para que las celdas no sean demasiado grandes */
+    text-align: center; /* Centra el contenido de las celdas */
+  }
+  
+
+ /* Mejorar la experiencia móvil */
+ @media (max-width: 768px) {
+    .table-wrapper {
+      top: 200px; /* Ajusta el valor para dispositivos más pequeños */
+      left: 35%; /* Ajusta el valor para dispositivos más pequeños */
+      width: 40%; /* La tabla ocupa el 90% del ancho del contenedor */
+      height: auto; /* Ajusta la altura automáticamente */
+      border: 1px solid #000; /* Disminuye el grosor del borde en dispositivos pequeños */
+      padding: 0 10px; /* Ajusta el padding en dispositivos más pequeños */
+    }
+  
+    .tableT .table th,
+    .tableT .table td {
+      padding: 4px; /* Ajusta el padding en dispositivos más pequeños */
+    }
+  }
+  
+  /* Ajustes para pantallas más grandes */
+  @media (min-width: 1200px) {
+    .table-wrapper {
+      width: 35%; /* Ajusta el ancho del contenedor en pantallas grandes */
+      height: 60%;
+      top: 30%;
+      left: 22%; /* Ajusta el valor para centrar el contenedor en pantallas grandes */
+      position: absolute; /* Usa posición absoluta para mover el contenedor */
+      /*border: 2px solid #000; Agrega un borde sólido negro */
+      overflow-x: auto; /* Permite el desplazamiento horizontal si el contenido es demasiado ancho */
+    }
+  
+    .tableT .table th,
+    .tableT .table td {
+      padding: 12px; /* Ajusta el padding para celdas en pantallas grandes */
+    }
+  }
+/* Leyenda */
+.legend {
+  position: sticky;
+  top: 0; /* Se mantiene fija en la parte superior del contenedor */
+  display: flex;
+  align-items: center;
+  border: 2px solid #000; /* Borde alrededor de la leyenda */
+  gap: 15px;
+  background-color: rgb(236, 236, 236); /* Fondo blanco sólido */
+  z-index: 10; /* Asegura que la leyenda esté por encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Agrega sombra para un efecto de elevación */
+}
+
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .box {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+  }
+  
+  .recent { background-color: #4CAF50; } /* Verde */
+  .almost-expired { background-color: #C4B454; } /* Amarillo opaco */
+  .expired { background-color: #B04A4A; } /* Rojo */
+  

@@ -1,0 +1,10 @@
+/* Estilos para el footer */
+.footer {
+    width: 100%;
+    background-color: #01303F; /* Color de fondo oscuro */
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

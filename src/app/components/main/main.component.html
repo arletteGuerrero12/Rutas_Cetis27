@@ -1,0 +1,32 @@
+<!-- Menú lateral -->
+<div #sideMenu class="lateral">
+
+  <!-- Combobox para seleccionar un estado  
+   EL CHANGE es para mandar llamar el otro metodo de inmediato por eso te aparecen los datos sin dar al boton enviar -->
+  <select class="menu-select" [(ngModel)]="estadoSeleccionado" (change)="enviarMensaje()">
+    <option value>Estados</option>
+    <option value="Jalisco">Jalisco</option>
+    <option value="Michoacán">Michoacán</option>
+  </select>
+
+  <!-- Combobox de municipio filtrado -->
+  <select class="menu-select" [(ngModel)]="municipioSeleccionado">
+    <option value="">Municipio</option>
+    <option *ngFor="let municipio of municipiosFiltrados" [value]="municipio.nombre">{{ municipio.nombre}}</option>
+  </select>
+  
+  <!-- Campo para ingresar el código postal -->
+  <div class="codigoP">
+    <input type="text" class="codigo" placeholder="Código Postal" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" [(ngModel)]="codigoP">
+  </div>
+
+  <!-- Botón Generar -->
+  <div class="generar">
+    <button (click)="enviarCodigo()" type="button" class="btn btn-outline-info">ENVIAR</button>
+  </div>
+
+  <div class="reporte">
+    <button type="button" class="btn btn-primary">REPORTE</button>
+  </div>
+
+</div>

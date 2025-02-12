@@ -1,0 +1,83 @@
+/* src/app/my-table/my-table.component.css */
+
+/* Muestra el menú */
+.lateral {
+  width: 300px;
+  height: 800px;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #025E73;
+  border: 2px solid #000; /* Agrega un borde sólido negro */
+}
+
+/* main.component.css */
+@media (max-width: 768px) {
+  .lateral {
+    width: 30%;
+  }
+}
+
+/* Estilos para el combobox */
+.menu-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #025E73;
+  color: white;
+  border: none;
+  margin-top: 20px;
+}
+
+/* Ajustes para .codigoP para evitar desbordamiento */
+.codigoP {
+  display: flex;
+  flex-wrap: wrap; /* Permite que el contenido se ajuste en varias líneas si es necesario */
+  margin-left: 5%;
+  margin-top: 10%;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho y alto total del contenedor */
+}
+
+/* Ajustes responsivos para .codigoP */
+@media (max-width: 768px) {
+  .codigoP {
+    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+    margin-top: 5%; /* Ajusta el margen superior en pantallas pequeñas */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  }
+}
+
+.generar {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  margin-top: 30%; /* Ajusta el margen superior */
+}
+.reporte {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  margin-top: 15%; /* Ajusta el margen superior */
+}
+
+/* Estilos para el botón "GENERAR" */
+.btn {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border: 2px solid #f1c40f;
+  background-color: #818181;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #043b4e;
+  color: white;
+}
+
+.menu-select option {
+  background-color: #111; /* Color de fondo de las opciones */
+  color: #818181; /* Color de las letras de las opciones */
+}
