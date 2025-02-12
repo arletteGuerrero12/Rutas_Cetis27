@@ -1,0 +1,7 @@
+.container {
+    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+    max-width: 100%; /* Evita que se aplique un tamaño máximo */
+    padding: 0; /* Elimina cualquier relleno que pueda afectar el tamaño */
+    margin: 0; /* Elimina cualquier margen que pueda afectar el tamaño */
+
+}

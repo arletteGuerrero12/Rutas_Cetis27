@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartConfiguration, ChartType } from 'chart.js';
-import { NgChartsModule } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-graphic',
   standalone: true,
-  imports: [CommonModule, NgChartsModule],  // Importa NgChartsModule correctamente
+  imports: [CommonModule],  // Importa NgChartsModule correctamente
   templateUrl: './graphic.component.html',
   styleUrls: ['./graphic.component.css']
 })
