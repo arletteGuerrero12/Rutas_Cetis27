@@ -1,0 +1,41 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="form-container">
+      <h2 class="form-title">Iniciar Sesión</h2>
+  
+      <form (ngSubmit)="onLogin()" class="form-body">
+        <div>
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="email"
+            [(ngModel)]="email" 
+            name="email"
+            class="form-input"
+            placeholder="ejemplo@correo.com"
+            required>
+        </div>
+  
+        <div>
+          <label for="password" class="form-label">Contraseña</label>
+          <input 
+            type="password" 
+            id="password"
+            [(ngModel)]="password" 
+            name="password"
+            class="form-input"
+            placeholder="••••••••"
+            required>
+        </div>
+  
+        <button 
+          type="submit"
+          class="form-button">
+          Iniciar Sesión
+        </button>
+  
+        <p *ngIf="errorMessage" class="form-error">{{ errorMessage }}</p>
+
+      </form>
+    </div>
+  </div>
+  

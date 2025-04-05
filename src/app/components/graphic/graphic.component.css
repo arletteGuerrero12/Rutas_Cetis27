@@ -1,0 +1,11 @@
+
+
+@media (min-width: 1200px) {
+    .graphic {
+        width: 30%; /* Ajusta el ancho del contenedor en pantallas grandes */
+        height: 30%;
+        /* Ajusta este valor según el tamaño deseado */
+        margin: -27%;
+        margin-left: 64%;
+    }
+  }

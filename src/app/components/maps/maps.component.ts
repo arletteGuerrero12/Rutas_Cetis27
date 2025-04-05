@@ -50,14 +50,14 @@ export class MapsComponent implements AfterViewInit, OnInit {
 
   initMap(): void {
     const geojsonSource = new VectorSource({
-      url: 'assets/imagine/estados.json',
+      url: 'assets/imagine/municipios.json',
       format: new GeoJSON()
     });
 
     this.geojsonLayer = new VectorLayer({
       source: geojsonSource,
       style: (feature) => {
-        if (feature.get('CVE_ENT') === '16' ) {
+        if (feature.get('CVE_MUN') === '102' && feature.get( 'CVE_ENT') === '16' ) {
           return new Style({
             stroke: new Stroke({
               color: '#FF0000',
@@ -95,8 +95,8 @@ export class MapsComponent implements AfterViewInit, OnInit {
         this.markerLayer
       ],
       view: new View({
-        center: fromLonLat([-99.1332, 19.4326]),
-        zoom: 6
+        center: fromLonLat([-102.05644, 19.41116]),
+        zoom: 10
       })
     });
   }

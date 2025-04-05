@@ -4,14 +4,14 @@
   <!-- Combobox para seleccionar un estado  
    EL CHANGE es para mandar llamar el otro metodo de inmediato por eso te aparecen los datos sin dar al boton enviar -->
   <select class="menu-select" [(ngModel)]="estadoSeleccionado" (change)="enviarMensaje()">
-    <option value>Estados</option>
+    <option value>Colonia</option>
     <option value="Jalisco">Jalisco</option>
     <option value="Michoacán">Michoacán</option>
   </select>
 
   <!-- Combobox de municipio filtrado -->
   <select class="menu-select" [(ngModel)]="municipioSeleccionado">
-    <option value="">Municipio</option>
+    <option value="">Rutas</option>
     <option *ngFor="let municipio of municipiosFiltrados" [value]="municipio.nombre">{{ municipio.nombre}}</option>
   </select>
   

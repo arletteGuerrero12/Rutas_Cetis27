@@ -43,9 +43,9 @@
   @media (min-width: 1200px) {
     .table-wrapper {
       width: 35%; /* Ajusta el ancho del contenedor en pantallas grandes */
-      height: 60%;
-      top: 30%;
-      left: 22%; /* Ajusta el valor para centrar el contenedor en pantallas grandes */
+      height: 30%;
+      top: 220px;
+      left: 64%; /* Ajusta el valor para centrar el contenedor en pantallas grandes */
       position: absolute; /* Usa posición absoluta para mover el contenedor */
       /*border: 2px solid #000; Agrega un borde sólido negro */
       overflow-x: auto; /* Permite el desplazamiento horizontal si el contenido es demasiado ancho */
@@ -80,9 +80,27 @@
     width: 20px;
     height: 20px;
     border-radius: 3px;
+    border: 2px solid #000; /* Borde alrededor de la leyenda */
   }
   
   .recent { background-color: #4CAF50; } /* Verde */
   .almost-expired { background-color: #C4B454; } /* Amarillo opaco */
   .expired { background-color: #B04A4A; } /* Rojo */
+
+  .bg-red {
+    background-color: red !important;
+    color: white;
+  }
+  
+  .bg-green {
+    background-color: green !important;
+    color: white;
+  }
+  
+  .bg-brown {
+    background-color: brown !important;
+    color: white;
+  }
+  
+  
   

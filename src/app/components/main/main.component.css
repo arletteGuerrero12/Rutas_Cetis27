@@ -1,25 +1,18 @@
-/* src/app/my-table/my-table.component.css */
-
-/* Muestra el menú */
 .lateral {
-  width: 300px;
-  height: 800px;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: 100vh; /* Asegura que el menú ocupe toda la altura de la ventana */
   padding: 20px;
   background-color: #025E73;
   border: 2px solid #000; /* Agrega un borde sólido negro */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* Disposición vertical */
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado grande */
 }
 
-/* main.component.css */
-@media (max-width: 768px) {
-  .lateral {
-    width: 30%;
-  }
-}
-
-/* Estilos para el combobox */
 .menu-select {
   width: 100%;
   padding: 10px;
@@ -30,54 +23,69 @@
   margin-top: 20px;
 }
 
-/* Ajustes para .codigoP para evitar desbordamiento */
 .codigoP {
   display: flex;
-  flex-wrap: wrap; /* Permite que el contenido se ajuste en varias líneas si es necesario */
-  margin-left: 5%;
-  margin-top: 10%;
+  flex-direction: column; /* Asegura que el contenido se disponga verticalmente */
+  margin: 10px 0; /* Ajusta el margen para mantener el contenido centrado */
   width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
   box-sizing: border-box; /* Incluye padding y borde en el ancho y alto total del contenedor */
 }
 
-/* Ajustes responsivos para .codigoP */
-@media (max-width: 768px) {
-  .codigoP {
-    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
-    margin-top: 5%; /* Ajusta el margen superior en pantallas pequeñas */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
-  }
-}
 
-.generar {
+.generar, .reporte {
   display: flex;
   justify-content: center; /* Centra el botón horizontalmente */
   margin-top: 30%; /* Ajusta el margen superior */
 }
-.reporte {
-  display: flex;
-  justify-content: center; /* Centra el botón horizontalmente */
-  margin-top: 15%; /* Ajusta el margen superior */
-}
 
-/* Estilos para el botón "GENERAR" */
 .btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 1.2em;
+  font-weight: bold;
   cursor: pointer;
-  border: 2px solid #f1c40f;
-  background-color: #818181;
-  color: #ffffff;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border: 2px solid #0288D1; /* Color del borde */
+  background-color: #039BE5; /* Color de fondo */
+  color: #FFFFFF; /* Color del texto */
+  border-radius: 8px; /* Bordes redondeados */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Transiciones para hover */
 }
 
 .btn:hover {
-  background-color: #043b4e;
-  color: white;
+  background-color: #0277BD; /* Color de fondo en hover */
+  color: #c7b88a; /* Color del texto en hover */
+  transform: scale(1.05); /* Efecto de ampliación */
+}
+
+.btn:active {
+  background-color: #01579B; /* Color de fondo cuando se hace clic */
+  transform: scale(0.95); /* Efecto de reducción al hacer clic */
 }
 
 .menu-select option {
   background-color: #111; /* Color de fondo de las opciones */
   color: #818181; /* Color de las letras de las opciones */
+}
+
+@media (max-width: 768px) {
+  .lateral {
+    width: 40%; /* Mantén el ancho del 40% en pantallas pequeñas */
+    max-width: none; /* Permite que ocupe todo el ancho disponible */
+    padding: 10px;
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado grande */
+  }
+
+  .codigoP {
+    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+    margin-top: 5%; /* Ajusta el margen superior en pantallas pequeñas */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho y alto total del contenedor */
+    overflow: hidden; /* Evita desbordamientos */
+  }
+}
+
+@media (min-width: 1200px) {
+  .lateral {
+    max-width: 300px;
+    padding: 20px;
+  }
 }

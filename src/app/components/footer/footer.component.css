@@ -1,10 +1,52 @@
 /* Estilos para el footer */
-.footer {
+.main-footer {
     width: 100%;
-    background-color: #01303F; /* Color de fondo oscuro */
+ 
+    background-color: #0C231E; /* Color de fondo oscuro */
     color: white;
     text-align: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
+    top: 480px;
+    padding: 40px 0; /* Aumenta el espacio interno del footer */
+    
+
 }
+
+  
+  .list-info {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .list-inline {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  

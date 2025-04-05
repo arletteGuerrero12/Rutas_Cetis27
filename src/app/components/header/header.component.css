@@ -1,54 +1,80 @@
 header {
     width: 100%;
-    background-color: #01303F;
+    background-color: #0C231E;
     color: white;
     padding: 15px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Distribuye el logo y la navegación a los extremos */
     align-items: center;
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho del header */
-}
-
-.logo {
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  }
+  button {
+    background-color: #9D2449;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+  }
+  
+  
+  button:hover {
+    background-color: #c9302c;
+  }
+  
+  
+  .logo {
     font-size: 2em;
     font-weight: 800;
-    margin-right: auto;
-}
-
-nav {
-    
+  }
+  
+  nav {
     display: flex;
     justify-content: center;
-    left: 0px;
-
-}
-
-nav ul {
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  }
+  
+  nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 20px;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     margin: 0 15px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.2em;
     transition: color 0.3s;
-}
-
-nav ul li a:hover {
+  }
+  
+  nav ul li a:hover {
     color: #f1c40f; /* Color dorado en hover */
-}
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column; /* Cambia a disposición vertical en pantallas pequeñas */
+      align-items: center;
     }
-}
+  
+    .logo {
+      margin-bottom: 15px; /* Agrega margen inferior en pantallas pequeñas */
+    }
+  
+    nav ul {
+      flex-direction: column; /* Cambia a disposición vertical en pantallas pequeñas */
+      align-items: center;
+      gap: 10px;
+    }
+
+  }
+  
