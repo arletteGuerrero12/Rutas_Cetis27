@@ -3,16 +3,37 @@
 
   <!-- Combobox para seleccionar un estado  
    EL CHANGE es para mandar llamar el otro metodo de inmediato por eso te aparecen los datos sin dar al boton enviar -->
-  <select class="menu-select" [(ngModel)]="estadoSeleccionado" (change)="enviarMensaje()">
-    <option value>Colonia</option>
-    <option value="Jalisco">Jalisco</option>
-    <option value="Michoacán">Michoacán</option>
-  </select>
+
 
   <!-- Combobox de municipio filtrado -->
-  <select class="menu-select" [(ngModel)]="municipioSeleccionado">
-    <option value="">Rutas</option>
-    <option *ngFor="let municipio of municipiosFiltrados" [value]="municipio.nombre">{{ municipio.nombre}}</option>
+  <select class="menu-select" [(ngModel)]="rutaSeleccionada" (change)="onRutaSeleccionada($event)">
+    <option value="">Ruta</option>
+    <option *ngFor="let ruta of rutas" [value]="ruta.ID_Ruta">
+      {{ ruta.Nombre }} - {{ ruta.Descripcion }}
+    </option>
+  </select>
+
+    <select class="menu-select" [(ngModel)]="codigoPostalSeleccionado" (change)="onCodigoPostalSeleccionado($event)">
+    <option value="">Código Postal</option>
+    <option *ngFor="let cp of codigosPostales" [value]="cp.codigo_postal">
+      {{ cp.codigo_postal }}
+    </option>
+  </select>
+
+
+
+    <select class="menu-select" [(ngModel)]="rutaSeleccionada" (change)="onRutaSeleccionada($event)">
+    <option value="">Colonias</option>
+    <option *ngFor="let ruta of rutas" [value]="ruta.ID_Ruta">
+      {{ ruta.Nombre }} - {{ ruta.Descripcion }}
+    </option>
+  </select>
+
+    <select class="menu-select" [(ngModel)]="rutaSeleccionada" (change)="onRutaSeleccionada($event)">
+    <option value="">Turno</option>
+    <option *ngFor="let ruta of rutas" [value]="ruta.ID_Ruta">
+      {{ ruta.Nombre }} - {{ ruta.Descripcion }}
+    </option>
   </select>
   
   <!-- Campo para ingresar el código postal -->
@@ -30,3 +51,4 @@
   </div>
 
 </div>
+

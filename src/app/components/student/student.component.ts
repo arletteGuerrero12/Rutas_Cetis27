@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { MainComponent } from '../main/main.component';
@@ -6,9 +7,8 @@ import { MapsComponent } from '../maps/maps.component';
 import { TableComponent } from '../table/table.component';
 import { GraphicComponent } from '../graphic/graphic.component';
 
-
 @Component({
-  selector: 'app-home',
+  selector: 'app-student',
   standalone: true,
   imports: [
     HeaderComponent,
@@ -18,7 +18,7 @@ import { GraphicComponent } from '../graphic/graphic.component';
     TableComponent,
     GraphicComponent
   ],
-  templateUrl: './home.component.html', // Ahora enlazas el archivo HTML
-  styleUrls: ['./home.component.css']
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
-export class HomeComponent {}
+export class StudentComponent {}

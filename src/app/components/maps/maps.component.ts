@@ -9,14 +9,15 @@ import OSM from 'ol/source/OSM';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
+import KML from 'ol/format/KML';
 import { fromLonLat } from 'ol/proj';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
-import { Icon, Style, Stroke, Fill } from 'ol/style';
+import { Icon, Style, Stroke } from 'ol/style';
 
 @Component({
   selector: 'app-maps',
-  standalone: true,  // Asegúrate de tener esto en true
+  standalone: true,
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.css']
 })
@@ -26,16 +27,15 @@ export class MapsComponent implements AfterViewInit, OnInit {
   private markerLayer!: VectorLayer<VectorSource>;
   private geojsonLayer!: VectorLayer<VectorSource>;
   public errorMessage: string = '';  
-  public mensajeRecibido: string = ''; // Variable para almacenar el mensaje recibido
+  public mensajeRecibido: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object, 
     private http: HttpClient,
-    private comunicacionService: ComunicacionService // Inyectamos el servicio de comunicación
+    private comunicacionService: ComunicacionService
   ) {}
 
   ngOnInit(): void {
-    // Suscribirse al servicio para recibir mensajes
     this.comunicacionService.obtenerMensaje().subscribe((mensaje) => {
       this.mensajeRecibido = mensaje;
       console.log('Mensaje recibido en Map:', this.mensajeRecibido);
@@ -45,6 +45,7 @@ export class MapsComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.initMap();
+      this.loadKmlRoute(); // ← Carga la ruta desde archivo KML
     }
   }
 
@@ -57,7 +58,7 @@ export class MapsComponent implements AfterViewInit, OnInit {
     this.geojsonLayer = new VectorLayer({
       source: geojsonSource,
       style: (feature) => {
-        if (feature.get('CVE_MUN') === '102' && feature.get( 'CVE_ENT') === '16' ) {
+        if (feature.get('CVE_MUN') === '102' && feature.get('CVE_ENT') === '16') {
           return new Style({
             stroke: new Stroke({
               color: '#FF0000',
@@ -96,15 +97,35 @@ export class MapsComponent implements AfterViewInit, OnInit {
       ],
       view: new View({
         center: fromLonLat([-102.05644, 19.41116]),
-        zoom: 10
+        zoom: 13
       })
     });
+  }
+
+  loadKmlRoute(): void {
+    const kmlSource = new VectorSource({
+      url: 'assets/imagine/Ruta_1.kml', // ← Reemplaza con el nombre real de tu archivo
+      format: new KML()
+    });
+
+    const kmlLayer = new VectorLayer({
+      source: kmlSource,
+      style: new Style({
+        stroke: new Stroke({
+          color: '#0000FF', // Color azul para la ruta
+          width: 3
+        })
+      })
+    });
+
+    this.map.addLayer(kmlLayer);
   }
 
   searchAddress(address: string): void {
     const formattedAddress = this.formatAddress(address);
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(formattedAddress)}&key=14d1288818ee4320b066447af9108dc6`;
-console.log(formattedAddress)
+    console.log(formattedAddress)
+    console.log(address)
     this.http.get(url).subscribe((response: any) => {
       if (response.results.length > 0) {
         const location = response.results[0].geometry;

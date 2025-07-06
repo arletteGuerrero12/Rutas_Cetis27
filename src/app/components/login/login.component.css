@@ -5,7 +5,21 @@ body {
     background: url('../../../assets/imagine/dgti.jpeg') no-repeat center center fixed;
     background-size: cover;
   }
-  
+  .form-button-alt {
+  margin-top: 10px;
+  background-color: #4B6587;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-button-alt:hover {
+  background-color: #3b4f6e;
+}
   
   .min-h-screen {
     height: 100vh;
@@ -80,11 +94,14 @@ body {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   }
   
-  /* Error message */
   .form-error {
-    color: #dc2626;
-    font-size: 0.875rem;
+    color: #D8000C; /* Rojo vibrante */
+    background-color: #FFD2D2; /* Fondo rojo suave */
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 10px;
   }
   

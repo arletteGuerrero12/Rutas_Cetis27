@@ -12,19 +12,32 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  usuario = '';
+  contrasena = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    const isAuthenticated = this.authService.login(this.email, this.password);
+ 
 
-    if (isAuthenticated) {
-      this.router.navigate(['/home']); // Redirige a /home tras autenticación
-    } else {
-      this.errorMessage = 'Correo o contraseña incorrectos'; // Muestra el error
-    }
+  onLogin() {
+    this.authService.login(this.usuario, this.contrasena).subscribe(response => {
+      console.log("Respuesta de PHP:", response); // Ver en la consola
+      if (response.token) {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/home']); // Redirige a la página principal
+      } else {
+        this.errorMessage = 'Credenciales incorrectas  Verificar usuario o contraseña';
+
+           
+        // Limpiar los campos de usuario y contraseña
+        this.usuario = '';
+        this.contrasena = '';
+
+      }
+    });
+  }
+  onEstudiantes(): void {
+  this.router.navigate(['/student']);
   }
 }

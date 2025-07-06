@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ComunicacionService } from '../../services/comunicacion.service';
+import { AuthService } from '../../services/auth.service'; // ✅ Importar AuthService
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -9,57 +9,32 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  imports: [FormsModule, CommonModule] // Aquí agregamos CommonModule
+  imports: [FormsModule, CommonModule]
 })
 export class MainComponent implements OnInit {
   @ViewChild('sideMenu', { static: false }) sideMenu!: ElementRef;
-  municipios: { nombre: string, cveEnt: string }[] = [];
-  municipiosFiltrados: { nombre: string, cveEnt: string }[] = [];
-  estadoSeleccionado: string = '';
-  municipioSeleccionado: string = ''; // Añadimos esta propiedad
   codigoP: string = '';
+  rutas: any[] = []; // ✅ Almacenar rutas obtenidas desde la API
+  rutaSeleccionada: string = ''; // ✅ Para manejar la selección del usuario
+  codigoPo: string = '';
+  codigosPostales: any[] = [];
+  codigoPostalSeleccionado: string = '';
 
-  constructor(private comunicacionService: ComunicacionService, private http: HttpClient) {}
+  constructor(
+    private comunicacionService: ComunicacionService,
+    private authService: AuthService // ✅ Inyectar AuthService para obtener rutas
+  ) {}
 
   ngOnInit() {
-    this.cargarMunicipios();
-  }
-
-  cargarMunicipios() {
-    this.http.get<any>('assets/imagine/municipios.json').subscribe(data => {
-      this.municipios = data.features
-        .map((feature: any) => ({
-          nombre: feature.properties.NOM_MUN,
-          cveEnt: feature.properties.CVE_ENT
-        }))
-        .sort((a: { nombre: string; cveEnt: string }, b: { nombre: string; cveEnt: string }) => a.nombre.localeCompare(b.nombre)); // Ordenar alfabéticamente por nombre
+    // ✅ Obtener rutas desde la API al iniciar el componente
+    this.authService.getRuta().subscribe((data) => {
+      this.rutas = data;
     });
-  }
-  
-    
-
-  filtrarMunicipiosPorEstado() {
-    if (this.estadoSeleccionado === 'Michoacán') {
-      this.municipiosFiltrados = this.municipios.filter(municipio => municipio.cveEnt === '16');
-      console.log(this.estadoSeleccionado)
-    } else if (this.estadoSeleccionado === 'Jalisco') {
-      this.municipiosFiltrados = this.municipios.filter(municipio => municipio.cveEnt === '14');
-    } else {
-      this.municipiosFiltrados = [];
-    }
-  }
-
-  enviarMensaje() {
-    this.filtrarMunicipiosPorEstado();
-    if (this.estadoSeleccionado && this.estadoSeleccionado !== "#") {
-      this.comunicacionService.cambiarMensaje(this.estadoSeleccionado);
-    } else {
-      console.warn("No se ha seleccionado un estado válido");
-    }
   }
 
   enviarCodigo() {
     this.comunicacionService.cambiarMensaje(this.codigoP);
+    this.comunicacionService.cambiarMensaje(this.rutaSeleccionada);
   }
 
   toggleMenu() {
@@ -67,5 +42,16 @@ export class MainComponent implements OnInit {
       const menu = this.sideMenu.nativeElement;
       menu.classList.toggle('open');
     }
+  }
+
+  // ✅ Método que se ejecuta cuando cambia la selección de ruta en el combobox
+  onRutaSeleccionada(event: any) {
+    this.rutaSeleccionada = event.target.value;
+    console.log("Ruta seleccionada:", this.rutaSeleccionada);
+  }
+
+   onCodigoPostalSeleccionado(event: any) {
+    this.codigoPostalSeleccionado = event.target.value;
+    console.log("Código postal seleccionado:", this.codigoPostalSeleccionado);
   }
 }

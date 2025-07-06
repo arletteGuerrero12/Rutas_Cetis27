@@ -1,0 +1,17 @@
+.student-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+app-header,
+app-main,
+app-footer {
+  flex-shrink: 0;
+}
+
+app-maps {
+  flex-grow: 1;
+  min-height: 0;
+  overflow: hidden;
+}

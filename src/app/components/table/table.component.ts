@@ -70,19 +70,19 @@ export class TableComponent implements OnInit {
     // Función para agregar el encabezado en cada página
     const agregarEncabezado = () => {
       // Agregar franja azul en el encabezado
-      doc.setFillColor(0, 51, 102); // Azul oscuro
+      doc.setFillColor(12, 35, 30); // Azul oscuro
       doc.rect(0, 0, 210, 30, 'F'); // Rectángulo de ancho total
   
       // Agregar el logo de la empresa (ajusta la ruta según tu estructura)
       const logo = new Image();
-      logo.src = 'assets/imagine/LOGOINN.png';
+      logo.src = 'assets/imagine/dgtiSF.png';
       doc.addImage(logo, 'PNG', 10, 1, 28, 28); // Ajustado tamaño y posición
   
       // Agregar el nombre de la empresa
       doc.setTextColor(255, 255, 255);
       doc.setFontSize(23);
       doc.setFont('helvetica', 'bold');
-      doc.text('GeoInnmortal', 38, 18);
+      doc.text('Cetis 27', 38, 18);
   
       // Agregar la fecha de generación en la parte superior derecha
       const fechaActual = new Date().toLocaleDateString();
